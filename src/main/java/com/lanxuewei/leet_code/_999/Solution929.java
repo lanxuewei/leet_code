@@ -34,7 +34,6 @@ public class Solution929 {
      * @return 匹配个数
      */
     public int numUniqueEmails(String[] emails) {
-        int count = 0;
         Set<String> emailSet = new HashSet<>();
         for (int i = 0; i <= emails.length-1; i++) {
             String cleanedEmailStr = cleanEmail(emails[i]);
