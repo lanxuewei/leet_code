@@ -75,12 +75,36 @@ public class Solution771 {
         return count;
     }
 
+    /**
+     * 3、通过ASCII码解决
+     * @param J 宝石枚举
+     * @param S 你所拥有石头
+     * @return 宝石个数
+     */
+    public int numJewelsInStones3(String J, String S) {
+        int count = 0;
+        if (J == null || "".equals(J.trim())
+                || S == null || "".equals(S.trim())) {  // 只要J或者S为空或者空字符串就表示0
+            return count;
+        }
+        boolean[] jewel = new boolean[128];
+        for (char c : J.toCharArray()) {
+            jewel[c] = true;    // 表示该位置上即为珠宝
+        }
+        for (char c : S.toCharArray()) {
+            if (jewel[c]) {     // 表示是珠宝
+                count++;
+            }
+        }
+        return count;
+    }
+
     // test
     public static void main(String[] args) {
         String J = "edb";
         String S = "bbb";
         Solution771 solution771 = new Solution771();
-        log.info("my jewel num = {}", solution771.numJewelsInStones2(J, S));
+        log.info("my jewel num = {}", solution771.numJewelsInStones3(J, S));
     }
 
 }
