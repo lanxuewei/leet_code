@@ -45,4 +45,5 @@ public class Solution905 {
         Solution905 solution905 = new Solution905();
         log.info("sortArrayByParity = {}", solution905.sortArrayByParity(arr));
     }
+
 }

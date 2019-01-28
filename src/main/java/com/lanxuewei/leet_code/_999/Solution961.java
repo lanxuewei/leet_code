@@ -43,4 +43,5 @@ public class Solution961 {
         Solution961 solution961 = new Solution961();
         log.info("repeatedNTimes = {}", solution961.repeatedNTimes(A));
     }
+
 }
