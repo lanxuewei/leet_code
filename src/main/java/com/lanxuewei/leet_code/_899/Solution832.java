@@ -26,9 +26,9 @@ public class Solution832 {
     public int[][] flipAndInvertImage(int[][] A) {
         for (int i = 0; i < A.length-1; i++) {
             for (int j = 0; j < (A[i].length)/2; i++) {   // 只需要遍历[0,length/2]
-
             }
         }
+        return new int[1][1];
     }
 
     // test
