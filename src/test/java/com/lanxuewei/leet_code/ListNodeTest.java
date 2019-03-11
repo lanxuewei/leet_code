@@ -4,9 +4,13 @@
  */
 package com.lanxuewei.leet_code;
 
-import com.lanxuewei.leet_code.model.ListNode;
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
+
 import org.junit.Test;
+
+import com.lanxuewei.leet_code.model.ListNode;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author lanxuewei Create in 2019/3/11 13:53
@@ -26,6 +30,23 @@ public class ListNodeTest extends TestBase {
             log.info("{} ", listNode.val);
             listNode = listNode.next;
         }
+    }
+
+    /**
+     * description: 创建两条相交链表 测试
+     * @author lanxuewei 2019/3/11 17:06
+     */
+    @Test
+    public void testCreateIntersectList() {
+        List<ListNode> listNodes = ListNode.createIntersectList(10);
+        ListNode.printListNode(listNodes.get(0));
+        System.out.println();
+        ListNode.printListNode(listNodes.get(1));
+    }
+
+    @Test
+    public void testIsIntersectList() {
+        log.info("IsIntersectList = {}", ListNode.isIntersectList(ListNode.createIntersectList(10)));
     }
 
     /**

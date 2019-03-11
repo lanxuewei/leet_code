@@ -4,6 +4,9 @@
  */
 package com.lanxuewei.leet_code.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author lanxuewei Create in 2019/1/29 19:39
  * Description: 链表相关
@@ -35,6 +38,51 @@ public class ListNode {
             temp = listNode;
         }
         return head;
+    }
+
+    /**
+     * description: 创建两条相交的链表
+     * 例如：
+     *   1->2->3->4->5->6->7->8
+     *   0->9->3->4->5->6->7->8
+     * @param length 长度
+     * @return com.lanxuewei.leet_code.model.ListNode
+     * @author lanxuewei 2019/3/11 16:40
+     */
+    public static List<ListNode> createIntersectList(int length) {
+        List<ListNode> res = new ArrayList<>();
+        ListNode head1 = createListByLength(length);
+        res.add(head1);
+
+        int i = length;
+        ListNode head2 = new ListNode(i);
+        ListNode temp2 = head2;
+        for (; i < length*2; i++) {
+            ListNode listNode = new ListNode(i);
+            temp2.next = listNode;
+            temp2 = listNode;
+        }
+        temp2.next = head1; // 交点到list1中
+        res.add(head2);
+        return res;
+    }
+
+    /**
+     * description: 判断两条链表是否相交，判断最后节点是否一致
+     * @param listNodes 内含两条链表起点
+     * @return boolean 是否相交
+     * @author lanxuewei 2019/3/11 17:22
+     */
+    public static boolean isIntersectList(List<ListNode> listNodes) {
+        ListNode head1 = listNodes.get(0);
+        ListNode head2 = listNodes.get(1);
+        while (head1.next != null) {
+            head1 = head1.next;
+        }
+        while (head2.next != null) {
+            head2 = head2.next;
+        }
+        return head1.equals(head2);
     }
 
     // ----------------------- 关于环 -----------------------
