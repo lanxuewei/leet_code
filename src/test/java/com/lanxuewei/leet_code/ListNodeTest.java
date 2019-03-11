@@ -39,4 +39,25 @@ public class ListNodeTest extends TestBase {
         ListNode listNode2 = ListNode.createListByLength(5);
         log.info("This ListNode2 does not contain ring, isContainRing = {}", ListNode.isContainRing(listNode2));
     }
+
+    /**
+     * description: 找出链表中环的入口 测试
+     * @author lanxuewei 2019/3/11 14:59
+     */
+    @Test
+    public void testFindRingEntrance() {
+        ListNode listNode = ListNode.createRingByLength(10);    // 10/2=5，即5为环的入口
+        log.info("The ring entrance in listNode is = {}", ListNode.findRingEntrance(listNode).val);
+    }
+
+    /**
+     * description: 计算环的长度
+     * @author lanxuewei 2019/3/11 15:49
+     */
+    @Test
+    public void testCalculateRingLength() {
+        ListNode listNode = ListNode.createRingByLength(10);
+        log.info("The ring length = {}", ListNode.calculateRingLength(listNode));
+    }
+
 }

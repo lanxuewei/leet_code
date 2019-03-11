@@ -37,6 +37,7 @@ public class ListNode {
         return head;
     }
 
+    // ----------------------- 关于环 -----------------------
     /**
      * description: 产生一条数据从0开始到length-1的链表，带环
      * @param length 链表长度
@@ -48,7 +49,7 @@ public class ListNode {
         ListNode temp = head;
         ListNode ringEntranceNode = null;   // 环入口节点
         int ringEntranceIndex = length/2;
-        for (int i = 1; i < length-1; i++) {
+        for (int i = 1; i < length; i++) {
             ListNode listNode = new ListNode(i);
             if (ringEntranceIndex == i) {
                 ringEntranceNode = listNode;
@@ -80,6 +81,61 @@ public class ListNode {
             fastListNode = fastListNode.next.next;
         }
         return false;
+    }
+
+    /**
+     * description: 计算链表中环的长度
+     * @param head 头节点
+     * @return int 环长度
+     * @author lanxuewei 2019/3/11 15:37
+     */
+    public static int calculateRingLength(ListNode head) {
+        int length = 0;
+        if (head == null || head.next == null) {
+            return length;
+        }
+        ListNode slowListNode = head;
+        ListNode fastListNode = head.next;
+        boolean isContainRing = false;
+        while (slowListNode != null && fastListNode != null) {
+            if (slowListNode.equals(fastListNode)) {
+                isContainRing = true;
+                break;
+            }
+            slowListNode = slowListNode.next;
+            fastListNode = fastListNode.next.next;
+        }
+        if (isContainRing) {
+            ListNode temp = slowListNode.next;
+            length++;
+            while (!temp.equals(slowListNode)) {
+                length++;
+                temp = temp.next;
+            }
+        }
+        return length;
+    }
+
+    /**
+     * description: 在一个有环的链表中，找到环的入口 TODO 有问题
+     * @param head 头结点
+     * @return com.lanxuewei.leet_code.model.ListNode
+     * @author lanxuewei 2019/3/11 14:51
+     */
+    public static ListNode findRingEntrance(ListNode head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+        ListNode slowListNode = head;
+        ListNode fastListNode = head.next;
+        while (slowListNode != null && fastListNode != null) {
+            if (slowListNode.equals(fastListNode)) {
+                return slowListNode;
+            }
+            slowListNode = slowListNode.next;
+            fastListNode = fastListNode.next.next;
+        }
+        return null;
     }
 
     /**
