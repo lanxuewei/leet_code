@@ -24,11 +24,26 @@ import lombok.extern.slf4j.Slf4j;
 public class Solution509 {
 
     public int fib(int N) {
-
+        if (N == 0) {
+            return 0;
+        }
+        if (N == 1 || N == 2) {
+            return 1;
+        }
+        int first = 1;
+        int second = 1;
+        int res = 0;
+        for (int i = 3; i <= N; i++) {
+            res = first + second;
+            first = second;
+            second = res;
+        }
+        return res;
     }
 
     // test
     public static void main(String[] args) {
-
+        Solution509 solution509 = new Solution509();
+        log.info("fib [{}] = {}", 5, solution509.fib(5));
     }
 }
