@@ -16,5 +16,3 @@
 -- 使用连接查询
 SELECT p1.`Email` FROM Person AS p1 INNER JOIN
 (SELECT id,`Email`,COUNT(Email) AS count FROM Person GROUP BY `Email` HAVING count > 1) AS p2 WHERE p1.id = p2.id ;
-
---
